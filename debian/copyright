@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: tvm-runtime
+Source: <url://example.com>
+
+Files: *
+Copyright: apache
+License: Apache 2.0
+
+Files: debian/*
+Copyright: 2021 junhwan <junhwan@unknown>
+License: Apache 2.0
