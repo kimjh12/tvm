@@ -283,4 +283,4 @@ set(USE_BNNS OFF)
 # - AUTO: auto set according to system information and feasibility
 # - ON: enable libbacktrace
 # - OFF: disable libbacktrace
-set(USE_LIBBACKTRACE AUTO)
+set(USE_LIBBACKTRACE OFF)
