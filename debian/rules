@@ -31,7 +31,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	cd $(BUILDDIR) && \
-	DESTDIR=$(CURDIR)/debian/tmp /usr/bin/cmake -P cmake_install.cmake
+	DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
 
 override_dh_auto_clean:
 	rm -rf $(BUILDDIR)
