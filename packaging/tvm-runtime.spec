@@ -16,8 +16,6 @@ Source1001: %{name}.manifest
 # specifies build-time dependencies for the package
 # ==========================================================
 BuildRequires:  cmake 
-# Provides:   libgtest_main.so.0 libgtest.so.0
-# Provides:   libgmock_main.so.0 libgmock.so.0
 
 %description
 %{name} version %{version}
