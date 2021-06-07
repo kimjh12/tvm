@@ -238,4 +238,15 @@ conda/pkg
 .tvm_test_data
 .dgl
 .caffe2
-.pc
+
+# debuild
+debian/*.debhelper.log
+debian/*.postrm.debhelper
+debian/*.substvars
+debian/debhelper-build-stamp
+debian/files
+debian/.debhelper/*
+debian/tmp/*
+debian/tvm-runtime/*
+debian/tvm-runtime-dev/*
+

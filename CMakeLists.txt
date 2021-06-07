@@ -551,6 +551,9 @@ if (INSTALL_DEV)
     FILES_MATCHING
     PATTERN "*.h"
     )
+# install .pc file
+  configure_file(tvm_runtime.pc.in tvm_runtime.pc @ONLY)
+  install(FILES ${CMAKE_BINARY_DIR}/tvm_runtime.pc DESTINATION "lib/pkgconfig")
 else(INSTALL_DEV)
   install(
     DIRECTORY "include/tvm/runtime/." DESTINATION "include/tvm/runtime"

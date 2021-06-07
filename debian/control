@@ -12,5 +12,9 @@ Standards-Version: 4.1.2
 Package: tvm-runtime
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: TVM package
+
+Package: tvm-runtime-dev
+Architecture: any
+Depends: tvm-runtime, ${shlibs:Depends}, ${misc:Depends}
+Description: TVM devel package

@@ -15,11 +15,8 @@ export DH_VERBOSE = 1
 
 export BUILDDIR = build
 
-
 %:
 	dh $@ --parallel
-
-
 
 override_dh_auto_configure:
 	mkdir -p $(BUILDDIR) 
