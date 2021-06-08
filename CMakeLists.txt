@@ -553,7 +553,7 @@ if (INSTALL_DEV)
     )
 # install .pc file
   configure_file(tvm_runtime.pc.in tvm_runtime.pc @ONLY)
-  install(FILES ${CMAKE_BINARY_DIR}/tvm_runtime.pc DESTINATION "lib/pkgconfig")
+  install(FILES ${CMAKE_BINARY_DIR}/tvm_runtime.pc DESTINATION "lib${LIB_SUFFIX}/pkgconfig")
 else(INSTALL_DEV)
   install(
     DIRECTORY "include/tvm/runtime/." DESTINATION "include/tvm/runtime"

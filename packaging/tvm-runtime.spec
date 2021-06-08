@@ -20,6 +20,12 @@ BuildRequires:  cmake
 %description
 %{name} version %{version}
 
+%package devel
+Summary:    develelopment package
+Requires:   tvm-runtime = %{version}-%{release}
+%description devel
+development package for tvm
+
 %prep
 %setup -q
 cp %{SOURCE1001} .
@@ -59,4 +65,7 @@ popd
 %files
 %manifest %{name}.manifest
 %{_libdir}/*.so
+
+%files devel
 %{_includedir}/*
+%{_libdir}/pkgconfig/tvm_runtime.pc
