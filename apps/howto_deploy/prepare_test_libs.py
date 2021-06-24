@@ -39,20 +39,26 @@ def prepare_test_libs(base_path):
 
 
 def prepare_graph_lib(base_path):
-    x = relay.var("x", shape=(2, 2), dtype="float32")
-    y = relay.var("y", shape=(2, 2), dtype="float32")
-    params = {"y": np.ones((2, 2), dtype="float32")}
-    mod = tvm.IRModule.from_expr(relay.Function([x, y], x + y))
+    x = relay.var("x", shape=(1, 640,480, 3), dtype="float32")
+
+    mod = tvm.IRModule.from_expr(relay.Function([x], x + relay.ones_like(x)))
     # build a module
-    compiled_lib = relay.build(mod, tvm.target.create("llvm"), params=params)
+    target = tvm.target.arm_cpu("rasp3b")
+    target = tvm.target.Target("llvm -mtriple=armv7l-linux-gnueabi -mfloat-abi=soft -mattr=+neon")
+    target ="llvm"
+    compiled_lib = relay.build(mod, target)
+    
     # export it as a shared library
     # If you are running cross compilation, you can also consider export
     # to tar and invoke host compiler later.
-    dylib_path = os.path.join(base_path, "test_relay_add.so")
+    dylib_path = os.path.join(base_path, "tvm_add_one.so_")
+    # cc = "/opt/tizen-toolchain-9.2.0-20200409-x86_64_armv7l-tizen-linux-gnueabi/bin/armv7l-tizen-linux-gnueabi-g++"
     compiled_lib.export_library(dylib_path)
+    #compiled_lib.export_library(dylib_path, tvm.contrib.cc.create_shared, cc="/usr/bin/arm-linux-gnueabi-g++")
+
 
 
 if __name__ == "__main__":
     curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
-    prepare_test_libs(os.path.join(curr_path, "lib"))
+#    prepare_test_libs(os.path.join(curr_path, "lib"))
     prepare_graph_lib(os.path.join(curr_path, "lib"))
